@@ -1,3 +1,28 @@
+# Show Profile - React State
+
+A class-based component with state, showing a profile by clicking on a button.
+
+On clicking a button the show state toggles. 
+
+When the show state is true, the person's profile will appear.
+
+## Steps followed:
+
+```
+- A project is created using create-react-app.
+
+-The App.js is transformed into a class-based component.
+
+-A state is implemented for this class containing a 
+ Person ={ fullName,bio, imgSrc, profession} and a boolean shows.
+ 
+-A button is added that toggles the show state. 
+ When the show state is true, the person's profile will appear.
+ 
+-A field is created that shows the time interval since the last component was mounted using the component lifecycle.
+ (The setInterval method is used).
+```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
