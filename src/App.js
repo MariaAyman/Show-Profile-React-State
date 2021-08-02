@@ -1,36 +1,33 @@
 import React from "react";
+import Profile from './Profile.js';
 
 class App extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      Person: {
-        fullName: "Maria Ayman",
-        bio: "Junior React Developer",
-        imgSrc: "/profile.png",
-        profession: "Engineer"
-      },
       shows: false,
       msg: "Show Profile",
-      //date: new Date()
       sec: 0
     };
   }
-
-  componentDidMount(){
+  
+  reset = () => {
+    //clear interval
+    clearInterval(this.timerID);
+    //set timer to 0
+    this.setState({
+      sec: 0
+    });
+    //tick
     this.timerID = setInterval(
-      () => this.tick(), 1000
+      () => 
+        this.setState({
+          sec: this.state.sec + 1
+        }), 1000
     );
   }
 
-  componentWillUnmount(){
-    clearInterval(this.timerID);
-  }
-
   tick(){
-    // this.setState({
-    //   date: new Date()
-    // });
     this.setState({
       sec: this.state.sec + 1
     });
@@ -49,14 +46,7 @@ class App extends React.Component{
       <div className="container">
         <button onClick={this.showProfile} className="button">{this.state.msg}</button>
         {this.state.shows && (
-          <div className="profileCont">
-            <img src={this.state.Person.imgSrc} alt="" className="profileImg"/>
-            <div>
-              <p><span className="span">Full Name:</span> {this.state.Person.fullName}</p>
-              <p><span className="span">Bio:</span> {this.state.Person.bio}</p>
-              <p><span className="span">Profession:</span> {this.state.Person.profession}</p>
-            </div>
-          </div>
+          <Profile reset={this.reset}/>
         )}
         <h2 style={{color: "#fff"}}>It is {this.state.sec} secounds since mounting</h2>
       </div>
